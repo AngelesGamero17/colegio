@@ -8,7 +8,7 @@ $count =0;
 
 
 ?>
-<table id="table_asistencia_empleado" class="table table-bordered table-striped table-sm" style="font-size: 12px;">
+<table id="table_asistencia_empleado" class="table table-bordered table-striped table-sm" style="font-size: 16px;">
     <thead>
         <tr>
             <th>N°</th>
@@ -16,7 +16,6 @@ $count =0;
             <th>Empleado</th>
             <th>Asistencia</th>
             <th>Fecha</th>
-            <th>Acciones</th>
 
         </tr>
     </thead>
@@ -24,15 +23,14 @@ $count =0;
         <?php while ($fila = mysqli_fetch_assoc($rs)) {
             $count++;
            
-            if ($_SESSION['rango'] == "admin") {
+            
+            if ($_SESSION['rango'] == "admin" ||$_SESSION['rango'] == "Secretario") {
                 $btn_editar = '<button data-id="' . $fila["id_asistencia_empleado"] . '"
                  title="Mas detalle" class="btn btn-xs btn-warning new-modal-empleado"><i class="far fa-edit"></i></button>';
             } else {
                 $btn_editar = "";
             }
-            if ($_SESSION['rango'] != "admin") {
-                $accion = "";
-            } ?>
+            ?>
             <tr>
                 <td><?php echo $count ?></td>
                 <td><?php echo $fila["id_asistencia_empleado"] ?></td>
@@ -40,12 +38,7 @@ $count =0;
                 <td><?php echo $fila['asistencia'] ?></td>
                 <td><?php echo $fila['fecha'] ?></td>
                 
-                <td>
-                    <?php
-                    echo $btn_editar;
-                    echo $accion; ?>
-                    <button data-id="<?php echo $fila['id_asistencia_empleado'] ?>" title="Modificar" class="btn btn-xs btn-primary new-modal-show-asistencia_profesor"><i class="far fa-eye"></i></button>
-                </td>
+                
             </tr>
         <?php } ?>
     </tbody>
@@ -53,7 +46,7 @@ $count =0;
 <script>
     $(function() {
 
-        $("#table_alumnos").DataTable({
+        $("#table_asistencia_empleado").DataTable({
             "paging": true,
             "lengthChange": true,
             "searching": true,

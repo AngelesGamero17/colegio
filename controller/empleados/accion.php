@@ -5,6 +5,20 @@ include_once "../../model/user.php";
 $obj_user = new user();
 
 $obj_empleado = new Empleado();
+if(isset($_REQUEST['opcion_estado'])){
+    
+    if($_REQUEST['opcion_estado']=="desactivar"){
+        $obj_empleado->id_empleado=$_REQUEST['id'];
+        $obj_empleado->estado(1);
+        echo "true";
+        die();
+    } else if ($_REQUEST['opcion_estado'] == "activar") {
+        $obj_empleado->id_empleado = $_REQUEST['id'];
+        $obj_empleado->estado(0);
+        echo "true";
+        die();
+    }
+}
 
 $obj_empleado->nombres = $_REQUEST['txt_nombres'];
 $obj_empleado->apellido_paterno = $_REQUEST['txt_ap_pat'];

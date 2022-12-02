@@ -4,7 +4,26 @@ include_once "../../model/user.php";
 
 $obj_user = new user();
 
+
+
 $obj_profesor = new profesores();
+
+if(isset($_REQUEST['opcion_estado'])){
+    
+    if($_REQUEST['opcion_estado']=="desactivar"){
+        $obj_profesor->id_profesor=$_REQUEST['id'];
+        $obj_profesor->estado(1);
+        echo "true";
+        die();
+    } else if ($_REQUEST['opcion_estado'] == "activar") {
+        $obj_profesor->id_profesor = $_REQUEST['id'];
+        $obj_profesor->estado(0);
+        echo "true";
+        die();
+    }
+}
+
+
 $obj_profesor->id_profesor = $_REQUEST['id'];
 $obj_profesor->nomrbes=$_REQUEST['txt_nombres'];
 $obj_profesor->apellido_paterno=$_REQUEST['txt_ap_pat'];

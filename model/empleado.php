@@ -67,11 +67,12 @@ class Empleado extends cn{
     }
     
     public function estado($estado){
-        $query= "UPDATE empleado SET estado='$estado'";
+        $query= "UPDATE empleado SET estado='$estado' WHERE id_empleado = '$this->id_empleado'";
         $rs=mysqli_query($this->f_cn(),$query);
         mysqli_close($this->f_cn());
         return $rs;
     }
+
     public function consultDNI()
     {
         $query = "SELECT * FROM empleado WHERE nro_documento ='$this->nro_documento'";

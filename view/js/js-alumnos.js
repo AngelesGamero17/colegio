@@ -22,6 +22,7 @@ $(document).on("click","#btn_save",function(){
         type: 'POST',
         data: data,
         success: function (data) {
+            alert(data);
             if(data=="true"){
                 list_alumnos();
                 toastr.success("Datos guardados correctamente");
@@ -31,5 +32,38 @@ $(document).on("click","#btn_save",function(){
                 list_alumnos();
             }
         }
+    })
+})
+$(document).on("click", ".activar-item", function () {
+    var id = $(this).data('id');
+    var opcion_estado = "desactivar";
+    var url = "controller/alumnos/accion.php?id="+id+ "&opcion_estado=" + opcion_estado;
+    $.get(url, function (data) {
+        if (data.trim() == "true") {
+            toastr.success("Se activo correctamente");
+            list_alumnos();
+        } else {
+            alert("Error al desactivar"+data);
+        }
+    })
+})
+$(document).on("click", ".desactivar-item", function () {
+    var id = $(this).data('id');
+    var opcion_estado = "activar";
+    var url = "controller/alumnos/accion.php?id=" + id + "&opcion_estado=" + opcion_estado;
+    $.get(url, function (data) {
+        if (data.trim() == "true") {
+            toastr.success("Se desactivo correctamente");
+            list_alumnos();
+        } else {
+            alert("Error al desactivar"+data);
+        }
+    })
+});
+
+$(document).on("click","#cerrar_sesion",function(){
+    var url = "controller/login/logout/cerrar_sesion.php";
+    $.get(url,function(data){
+        console.log("s");
     })
 })

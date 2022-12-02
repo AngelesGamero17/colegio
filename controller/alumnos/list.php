@@ -7,7 +7,7 @@ $rs = $obj_alumnos->read();
 
 $count = 0;
 ?>
-<table id="table_alumnos" class="table table-bordered table-striped table-sm" style="font-size: 12px;">
+<table id="table_alumnos" class="table table-bordered table-striped table-sm" style="font-size: 14px;">
     <thead>
         <tr>
             <th>N°</th>
@@ -34,15 +34,13 @@ $count = 0;
                 title="Inactivar" class="btn btn-xs btn-danger desactivar-item" id="btn_item' . $fila["id_alumno"] . '">
                 <i class="far fa-trash-alt" id="icon_item' . $fila["id_alumno"] . '"></i></button>';
             }
-            if ($_SESSION['rango'] == "admin") {
+            if ($_SESSION['rango'] == "admin"||$_SESSION['rango'] == "Secretario") {
                 $btn_editar = '<button data-id="' . $fila["id_alumno"] . '"
                  title="Mas detalle" class="btn btn-xs btn-warning new-modal-alumnos"><i class="far fa-edit"></i></button>';
             } else {
                 $btn_editar = "";
             }
-            if ($_SESSION['rango'] != "admin") {
-                $accion = "";
-            } ?>
+             ?>
             <tr>
                 <td><?php echo $count ?></td>
                 <td><?php echo $fila['id_alumno'] ?></td>
@@ -56,7 +54,9 @@ $count = 0;
                 <td>
                     <?php
                     echo $btn_editar;
-                    echo $accion; ?>
+                    if($_SESSION['rango'] == "admin"||$_SESSION['rango'] == "Secretario"){
+                    echo $accion;
+                    } ?>
                     <button data-id="<?php echo $fila['id_alumno'] ?>" title="Modificar" class="btn btn-xs btn-primary new-modal-show-alumno"><i class="far fa-eye"></i></button>
                 </td>
 

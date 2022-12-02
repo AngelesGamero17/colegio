@@ -91,6 +91,14 @@ class profesores extends cn{
         }
         mysqli_close($this->f_cn());
     }
+    public function estado($estado)
+    {
+        $query = "UPDATE profesores SET estado = '$estado'
+        WHERE id_profesor = '$this->id_profesor'";
+        $rs = mysqli_query($this->f_cn(), $query);
+        mysqli_close($this->f_cn());
+        return $rs;
+    }
 }
 
 ?>

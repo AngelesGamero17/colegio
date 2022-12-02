@@ -5,7 +5,7 @@ $obj_asistencia_profesor = new asistencia_profesor();
 $rs = $obj_asistencia_profesor->read();
 $count =0;
 ?>
-<table id="table_asistencia_profesor" class="table table-bordered table-striped table-sm" style="font-size: 12px;">
+<table id="table_asistencia_profesor" class="table table-bordered table-striped table-sm" style="font-size: 16px;">
     <thead>
         <tr>
             <th>N°</th>
@@ -13,7 +13,6 @@ $count =0;
             <th>Profesor</th>
             <th>Asistencia</th>
             <th>Fecha</th>
-            <th>Acciones</th>
 
         </tr>
     </thead>
@@ -37,12 +36,7 @@ $count =0;
                 <td><?php echo $fila['asistencia'] ?></td>
                 <td><?php echo $fila['fecha'] ?></td>
 
-                <td>
-                    <?php
-                    echo $btn_editar;
-                    echo $accion; ?>
-                    <button data-id="<?php echo $fila['id_asistencia_profesor'] ?>" title="Modificar" class="btn btn-xs btn-primary new-modal-show-asistencia_profesor"><i class="far fa-eye"></i></button>
-                </td>
+                
             </tr>
         <?php } ?>
     </tbody>
@@ -50,7 +44,7 @@ $count =0;
 <script>
     $(function() {
 
-        $("#table_alumnos").DataTable({
+        $("#table_asistencia_profesor").DataTable({
             "paging": true,
             "lengthChange": true,
             "searching": true,

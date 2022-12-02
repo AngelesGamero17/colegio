@@ -29,7 +29,26 @@ class ViewController {
     public function profesores(){
         include "view/profesores.php";
     }
+    public function sessionAdmin(){
+        if($_SESSION['rango']=="admin"){
+            
+        }
+    }
+    public function sessionSecretario(){
+        if($_SESSION['rango']=="Secretario"){
 
+        }
+    }
+    public function sessionProfesor(){
+        if($_SESSION['rango']=="profesor"){
+
+        }
+    }
+    public function sessionAuxiliar(){
+        if($_SESSION['rango']="auxiliar"){
+
+        }
+    }
 
     public function session(){
         if(!isset($_SESSION['nombres'])){

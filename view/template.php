@@ -199,7 +199,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
             <li class="nav-item menu-open">
-              <a href="#" class="nav-link active">
+              <a href="#" class="nav-link ">
                 <i class="nav-icon fas fa-tachometer-alt"></i>
                 <p>
                   Sideral Carrion
@@ -208,48 +208,51 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </a>
               <ul class="nav nav-treeview ">
                 <li class="nav-item">
-                  <a href="index.php" class="nav-link active">
+                  <a href="index.php" class="nav-link  active">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Active Page</p>
                   </a>
                 </li>
+                <?php if($_SESSION['rango']=="admin"||$_SESSION['rango']=="Secretario") { ?>
                 <li class="nav-item">
-                  <a href="empleados.php" class="nav-link " id="new_empleado">
+                  <a href="empleados.php" class="nav-link" id="new_empleado">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Empleados</p>
                   </a>
                 </li>
+                <?php } ?>
+                <?php if($_SESSION['rango']=="admin"||$_SESSION['rango']=="Secretario") { ?>
                 <li class="nav-item">
                   <a href="matricula_alumnos.php" class="nav-link" id="">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Matricula de alumno</p>
                   </a>
-                  <li class="nav-item">
-                  <a href="asistencia_alumno.php" class="nav-link" id="">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Asistencia Alumno</p>
-                    </a>
                 </li>
+                <?php } ?>
+                <?php if($_SESSION['rango']=="admin"||$_SESSION['rango']=="auxiliar"||$_SESSION['rango']=="Secretario"||$_SESSION['rango']=="limpieza") { ?>
                 <li class="nav-item">
                   <a href="asistencia_empleado.php" class="nav-link" id="">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Asistencia Empleado</p>
                     </a>
                 </li>
+                <?php } ?>
+                <?php if($_SESSION['rango']=="admin"||$_SESSION['rango']=="profesor"||$_SESSION['rango']=="Secretario") { ?>
                 <li class="nav-item">
                   <a href="asistencia_profesor.php" class="nav-link" id="">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Asistencia Profesor</p>
                     </a>
                 </li>
-                
+                <?php } ?>
+                <?php if($_SESSION['rango']=="admin") { ?>
                 <li class="nav-item">
                   <a href="profesores.php" class="nav-link" id="">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Profesor</p>
                   </a>
                 </li>
-                
+                <?php } ?>
                 <li class="nav-item">
                   <a href="" class="nav-link" id="cerrar_sesion">
                     <i class="far fa-circle nav-icon"></i>

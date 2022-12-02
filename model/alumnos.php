@@ -63,5 +63,13 @@ class alumno extends cn{
         }
         mysqli_close($this->f_cn());
     }
+    public function estado($estado)
+    {
+        $query = "UPDATE alumnos SET estado = '$estado'
+        WHERE id_alumno = '$this->id_alumno'";
+        $rs = mysqli_query($this->f_cn(), $query);
+        mysqli_close($this->f_cn());
+        return $rs;
+    }
 }
 ?>
